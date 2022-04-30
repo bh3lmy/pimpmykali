@@ -11,6 +11,9 @@ esac
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups
+HISTIGNORE="&:ls:exit:[bf]g:history:ifconfig"
+HISTTIMEFORMAT="%F %T "
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -156,11 +159,11 @@ if ! shopt -oq posix; then
 fi
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export HISTCONTROL=ignoredups
-export HISTIGNORE="&:ls:exit:[bf]g:history:ifconfig"
-export HISTTIMEFORMAT="%F %T "
+
 if [[ -z $SCRIPT ]]; then
 	now=$(date +"%d_%m_%Y_%H:%M:%S")
 	export SCRIPT=~/.LOGS/term.log-$now.log
 	script "$SCRIPT"
 fi
+
+alias NewEngagement='mkdir -p {ReconScan,Exploit,PostExploitation,Reporting}'

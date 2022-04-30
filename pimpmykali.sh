@@ -791,7 +791,6 @@ install_vscode () {
     }
 
 
-
 # install powershell
 install_powershell () {
     if [[ -f /usr/bin/pwsh ]]; then
@@ -800,6 +799,18 @@ install_powershell () {
       echo -e "\n  $greenplus installing powershell"
       apt_update && apt_update_complete && apt -y install powershell
       echo -e "\n  $greenplus  powershell - installed "
+    fi
+    }
+
+
+# install Shutter
+install_shutter () {
+    if [[ -f /usr/bin/shutter ]]; then
+      echo -e "\n  $greenminus  shutter already installed - skipping"
+    else
+      echo -e "\n  $greenplus installing shutter"
+      apt_update && apt_update_complete && apt -y install shutter
+      echo -e "\n  $greenplus  shutter - installed "
     fi
     }
 
@@ -1499,6 +1510,7 @@ pimpmykali_menu () {
     echo -e "  M - Mayors MPP Course Setup  (adds requirments for Mayors MPP Course)"               # mayor_mpp
     echo -e "  A - MAPT Course Setup        (adds requirments for MAPT Course)"                     # mapt_course
     echo -e "  P - Install Powershell       (install powershell)"                                   # Install Powershell
+    echo -e "  U - Install Shutter          (install shutter)"                                      # Install shutter
     #echo -e "  P - Disable PowerManagement  (Gnome/XFCE Detection Disable Power Management)"        # disable_power_checkde # Thanks pswalia2u!!
     echo -e "  W - Gowitness Precompiled    (download and install gowitness)"                       # fix_gowitness
     echo -e "  V - Install MS-Vscode        (install microsoft vscode only)"                        # install_vscode
@@ -1527,6 +1539,7 @@ pimpmykali_menu () {
       c|C) check_chrome;;
       v|V) install_vscode;;
       p|P) install_powershell;;
+      u|U) install_shutter;;
       w|W) fix_gowitness;;
       n|N) fix_all; fix_upgrade;;
     #  d|D) downgrade_msf;;
@@ -1579,6 +1592,7 @@ check_arg () {
        --bpt) bpt                              ;;
     --vscode) install_vscode                   ;;
 --powershell) install_powershell               ;;
+   --shutter) install_shutter                  ;;
       --subl) install_sublime                  ;;
       --atom) install_atom                     ;;
    --upgrade) only_upgrade                     ;;
