@@ -790,6 +790,19 @@ install_vscode () {
     fi
     }
 
+
+
+# install powershell
+install_powershell () {
+    if [[ -f /usr/bin/pwsh ]]; then
+      echo -e "\n  $greenminus  powershell already installed - skipping"
+    else
+      echo -e "\n  $greenplus installing powershell"
+      apt_update && apt_update_complete && apt -y install powershell
+      echo -e "\n  $greenplus  powershell - installed "
+    fi
+    }
+
 # 04.06.2021 fix_sources rev 1.2.2 / rev 1.3.2 updated to add wildcards
 fix_sources () {
     fix_bad_apt_hash
@@ -1485,6 +1498,7 @@ pimpmykali_menu () {
     echo -e "  L - Install Sublime Editor   (install the sublime text editor)"                      # install_sublime
     echo -e "  M - Mayors MPP Course Setup  (adds requirments for Mayors MPP Course)"               # mayor_mpp
     echo -e "  A - MAPT Course Setup        (adds requirments for MAPT Course)"                     # mapt_course
+    echo -e "  P - Install Powershell       (install powershell)"                                   # Install Powershell
     #echo -e "  P - Disable PowerManagement  (Gnome/XFCE Detection Disable Power Management)"        # disable_power_checkde # Thanks pswalia2u!!
     echo -e "  W - Gowitness Precompiled    (download and install gowitness)"                       # fix_gowitness
     echo -e "  V - Install MS-Vscode        (install microsoft vscode only)"                        # install_vscode
@@ -1512,6 +1526,7 @@ pimpmykali_menu () {
       h|H) fix_httprobe;;
       c|C) check_chrome;;
       v|V) install_vscode;;
+      p|P) install_powershell;;
       w|W) fix_gowitness;;
       n|N) fix_all; fix_upgrade;;
     #  d|D) downgrade_msf;;
