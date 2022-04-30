@@ -1578,6 +1578,7 @@ check_arg () {
       --nmap) fix_nmap                         ;;
        --bpt) bpt                              ;;
     --vscode) install_vscode                   ;;
+--powershell) install_powershell               ;;
       --subl) install_sublime                  ;;
       --atom) install_atom                     ;;
    --upgrade) only_upgrade                     ;;
